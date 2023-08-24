@@ -59,12 +59,11 @@ export const {
       greenLight200: '#255D6A',
       greenLight300: '#0A313C',
 
-      purple100: '#8381D9',
-      purple200: '#2A2879',
+      purple: '#9120BD',
 
       gray100: '#F8F9FC',
       gray200: '#E6E8F2',
-      gray300: '#D1D6E4',
+      gray300: '#D9D9D9',
       gray400: '#C6C6C6',
       
       green100: '#e6f6f4',
