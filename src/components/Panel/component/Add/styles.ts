@@ -3,15 +3,15 @@ import * as Dialog from '@radix-ui/react-dialog';
 
 
 export const Trigger  = styled(Dialog.Trigger, {
-    fontSize: '$sm',
+    fontSize: '$md',
     color: '$gray200',
     fontWeight: '$bold',
 
     display: 'flex',
     alignItems: 'center',
     gap: '$2',
-    padding: '$3 $2',
-    background: '$gray900',
+    padding: '$2',
+    background: '$green400',
 
     border: '1px solid $gray900',
     borderRadius: '$sm',
@@ -22,7 +22,7 @@ export const Trigger  = styled(Dialog.Trigger, {
 
     '&:not(:disabled):hover, &:not(:disabled):focus':{
       border: '1px solid $gray300',
-      background: '$gray950',
+      background: '$green700',
     },
 
   "@media (max-width: 800px)": {
@@ -43,7 +43,7 @@ export const Content  = styled(Dialog.Content, {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  maxWidth: 1080,
+  maxWidth: 600,
   width: '80vw',
   padding: '2rem',
 
@@ -85,20 +85,10 @@ export const Navgation = styled('div', {
 
 export const MainContent = styled('div', {
   display: 'grid',
-  gridTemplateColumns: 'repeat(2, 1fr)',
+  gridTemplateColumns: '1fr',
   alignItems: 'center',
   justifyContent: 'center',
   marginTop: '2rem',
-
-  div: {
-    width: '100%',
-    maxWidth: 400,
-
-    img: {
-      width: '100%',
-      objectFit: 'contain'
-    }
-  },
 
   form: {
     display: 'flex',
@@ -110,13 +100,13 @@ export const MainContent = styled('div', {
       display: 'flex',
       flexDirection: 'column',
       gap: '$3',
-      color: '$green400',
-      fontSize: '$2xl',
+      color: '$purple',
+      fontSize: '$lg',
       fontWeight: '$bold',
 
       input: {
         border: '1px solid #bbb',
-        borderRadius: '$sm',
+        borderRadius: '$md',
         color: '#000',
         padding: '$2',
         outline: 'none',
@@ -125,6 +115,46 @@ export const MainContent = styled('div', {
           color: '$gray600',
           opacity: 0.7,
         }
+      }
+    },
+
+    h2: {
+      color: '$purple',
+      fontSize: '$lg',
+      fontWeight: '$bold',
+    },
+
+    div: {
+      display: 'grid',
+      alignItems: 'center',
+      gridTemplateColumns: 'repeat(3, 1fr)',
+      gap: '$3',
+
+      label: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: '$gray50',
+        fontSize: '$md',
+        border: '1px solid $gray50',
+        borderRadius: '$md',
+        padding: '$3 0',
+        width: '100%',
+        cursor: 'pointer',
+        transition: 'border, filter 0.2s',
+
+        '&:hover': {
+          border: '1px solid $purple',
+          filter: 'brightness(0.8)'
+        },
+
+        input: {
+          display: 'hidden',
+          width: 0,
+          height: 0,
+          overflow: 'hidden',
+          position: 'absolute',
+        },
       }
     },
 
@@ -154,20 +184,14 @@ export const MainContent = styled('div', {
 })
 
 export const Title = styled('h2', {
-    color: '$green400',
+    color: '$purple',
     lineHeight: '$base',
-    cursor: 'pointer',
-    transition: 'color 0.2s',
-    borderBottom: '2px solid #bbb',
-
-    '&:hover': {
-      color: '$green500'
-    },
+    borderBottom: '2px solid $purple',
 
     variants: {
       select: {
         true: {
-          borderBottom: '2px dotted $green400'
+          borderBottom: '2px dotted $purple'
         }
       }
     }

@@ -7,7 +7,7 @@ export function Add(){
   return(
     <Dialog.Root>
       <Trigger type='button'>
-        <Plus size={24} weight='bold' /> Adicionar
+        <Plus size={20} weight='bold' /> Adicionar
       </Trigger>
       <Dialog.Portal>
         <Overlay />
@@ -26,10 +26,27 @@ export function Add(){
             <form >
               <label>
                 Nome do serviço
-                <input required placeholder=''/>
+                <input required placeholder='Conselho Nacional de Justiça'/>
               </label>
+              
+              <h2>Status do serviço</h2>
 
-              <button type='submit'>Adicionar <Plus size={32} weight="bold" /> </button>
+              <div>
+                <label>
+                  Ativo
+                  <input type="radio" name='status' value='up' />
+                </label>
+                <label>
+                  Inativo
+                  <input type="radio" name='status' value='warning' />
+                </label>
+                <label>
+                  Erro
+                  <input type="radio" name='status' value='error' />
+                </label>
+              </div>
+
+              <button type='submit'>Adicionar <Plus size={24} weight="bold" /> </button>
             </form>
           </MainContent>
         </Content>
