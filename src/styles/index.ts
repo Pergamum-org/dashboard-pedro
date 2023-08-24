@@ -62,6 +62,7 @@ export const {
       purple100: '#8381D9',
       purple200: '#2A2879',
 
+      gray50: '#D9D9D9',
       gray100: '#F8F9FC',
       gray200: '#E6E8F2',
       gray300: '#D1D6E4',
