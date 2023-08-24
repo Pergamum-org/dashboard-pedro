@@ -1,3 +1,5 @@
+import { Container, Status } from "./style"
+
 interface CardProps {
     name: string
     status: 'up' | 'warning' | 'error'
@@ -5,8 +7,9 @@ interface CardProps {
 
 export function Card({name, status}: CardProps){
     return (
-        <div>
+        <Container>
             <strong>{name}</strong>
-        </div>
+            <Status status={status} >Status <span /></Status>
+        </Container>
     )
 }

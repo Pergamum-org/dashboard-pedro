@@ -1,20 +1,41 @@
 import { Panel } from "@/components/Panel";
 import { Container, Header, MainContent, Services } from "@/styles/pages/home";
 
+const fakeServer = {
+  services: [
+    {
+      id: 1,
+      service: "SERPRO",
+      status: "up"
+    },
+    {
+      id: 2,
+      service: "Conselho Nacional de Justiça",
+      status: "warning"
+    },
+    {
+      id: 3,
+      service: "Tribunal de Justiça",
+      status: "error"
+    }
+  ]
+}
+
 export interface ServicesProps {
   service: string
   id: number
   status: 'up' | 'warning' | 'error'
-}
+} 
 
-export interface DataServicesProps {
-  services: ServicesProps[]
-}
 
 export default async function Home() {
-  const { services } = await getServices()
+  const searchService = await getServices()
 
-  const utilsServices = services.filter(service => service.status === 'up' || service.status === 'warning')
+  if(!searchService) return <></>
+
+  const { services } = searchService
+
+  const totalServicesActive = services.filter(service => service.status === 'up' || service.status === 'warning')
 
   return (
     <Container>
@@ -22,12 +43,12 @@ export default async function Home() {
         <Services>
           <h1>Serviços ativos</h1>
           <div>
-            <h2>{utilsServices.length}</h2>
+            <h2>{totalServicesActive.length}</h2>
           </div>
         </Services>
       </Header>
       <MainContent>
-        <Panel services={services}/>
+        <Panel services={services} />
         <div></div>
       </MainContent>
     </Container>
@@ -35,14 +56,18 @@ export default async function Home() {
 }
 
 const getServices = async () => {
-  const dataServices = await fetch('http://localhost:3000/api/book/assenssiment', {
-      cache: 'force-cache',
-      next: { revalidate: 60 * 60 * 24 }, // 1 day
-    })
+  try{
+    const dataServices = await fetch('http://localhost:3333/services')
 
-    const { services }: DataServicesProps = await dataServices.json()
+    if(!dataServices){
+      throw new Error('Network response was not ok');
+    }
 
-  return {
-    services
+    const service: ServicesProps[] = await dataServices.json()
+
+
+    return {services: [...service]}
+  } catch(error){
+      console.log(error)
   }
 }
