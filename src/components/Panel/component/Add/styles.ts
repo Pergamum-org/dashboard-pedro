@@ -13,12 +13,14 @@ export const Trigger  = styled(Dialog.Trigger, {
     padding: '$2',
     background: '$green400',
 
-    border: '1px solid $gray900',
+    border: '1px solid $green400',
     borderRadius: '$sm',
     cursor: 'pointer',
 
     outline: 'none',
     transition: 'background-color 0.2s',
+    boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
+
 
     '&:not(:disabled):hover, &:not(:disabled):focus':{
       border: '1px solid $gray300',

@@ -24,7 +24,7 @@ export const Services = styled('div',{
     alignItems: 'center',
     flexDirection: 'column',
     gap: '$2',
-    marginBottom: '-5rem',
+    marginBottom: '-4rem',
 
     h1: {
         fontSize: '$2xl'
@@ -47,4 +47,13 @@ export const Services = styled('div',{
         }
     }
     
+})
+
+export const MainContent = styled('main', {
+    width: '100%',
+    maxWidth: '100vw',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(2, 1fr)',
+    gap: '$6',
+    margin: '0 auto',
 })

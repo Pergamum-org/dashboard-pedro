@@ -1,12 +1,20 @@
+import { ServicesProps } from "@/app/page";
 import { Add } from "./component/Add";
-import { Container } from "./style";
+import { Container, PanelStatus } from "./style";
 
-export function Panel(){
+interface PanelProps {
+  services: ServicesProps[]
+}
+
+export function Panel({ services }: PanelProps){
   return (
     <Container>
       <div>
         <Add />
       </div>
+      <PanelStatus>
+        {}
+      </PanelStatus>
     </Container>
   )
 }

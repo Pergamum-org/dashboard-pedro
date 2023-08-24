@@ -2,8 +2,22 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import { Close, Content, Hero, MainContent, Navgation, Overlay, Title, Trigger } from './styles'
 import { X, Plus } from '@phosphor-icons/react'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
 
+const formSchedule = z.object({
+  name: z.string().min(3),
+  status: z.string()
+})
+
+type FormProps = z.infer<typeof formSchedule>
 export function Add(){
+  const { register, handleSubmit } = useForm<FormProps>()
+
+  function handleAddNewService(data: FormProps){
+    console.log(data)
+  }
+
   return(
     <Dialog.Root>
       <Trigger type='button'>
@@ -23,10 +37,10 @@ export function Add(){
           </Hero>
 
           <MainContent>
-            <form >
+            <form onSubmit={handleSubmit(handleAddNewService)}>
               <label>
                 Nome do serviço
-                <input required placeholder='Conselho Nacional de Justiça'/>
+                <input required {...register('name')} placeholder='Conselho Nacional de Justiça'/>
               </label>
               
               <h2>Status do serviço</h2>
@@ -34,15 +48,15 @@ export function Add(){
               <div>
                 <label>
                   Ativo
-                  <input type="radio" name='status' value='up' />
+                  <input type="radio" {...register('status')} name='status' value='up' />
                 </label>
                 <label>
                   Inativo
-                  <input type="radio" name='status' value='warning' />
+                  <input type="radio" {...register('status')} name='status' value='warning' />
                 </label>
                 <label>
                   Erro
-                  <input type="radio" name='status' value='error' />
+                  <input type="radio" {...register('status')} name='status' value='error' />
                 </label>
               </div>
 
