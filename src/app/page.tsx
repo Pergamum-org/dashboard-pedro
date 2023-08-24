@@ -1,3 +1,4 @@
+import { Panel } from "@/components/Panel";
 import { Container, Header, Services } from "@/styles/pages/home";
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
           </div>
         </Services>
       </Header>
+      <Panel/>
     </Container>
   )
 }
