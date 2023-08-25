@@ -1,6 +1,6 @@
 'use client'
 import * as Dialog from '@radix-ui/react-dialog'
-import { Close, Content, Hero, MainContent, Navgation, Overlay, Title, Trigger } from './styles'
+import { Close, Content, Hero, Label, MainContent, Navgation, Overlay, Title, Trigger } from './styles'
 import { X, Plus } from '@phosphor-icons/react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -12,10 +12,19 @@ const formSchedule = z.object({
 
 type FormProps = z.infer<typeof formSchedule>
 export function Add(){
-  const { register, handleSubmit } = useForm<FormProps>()
+  const { register, handleSubmit, reset, watch } = useForm<FormProps>()
+
+  const statusInput = watch('status')
 
   async function handleAddNewService({name, status}: FormProps){
-    await fetch('http://localhost:3333/services', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({name, status})})
+    await fetch('http://localhost:3333/services', 
+      {
+        method: 'POST', 
+        headers: {'Content-Type': 'application/json'}, 
+        body: JSON.stringify({service: name, status})
+      })
+
+    reset()
   }
 
   return(
@@ -46,18 +55,18 @@ export function Add(){
               <h2>Status do serviço</h2>
 
               <div>
-                <label>
+                <Label active={statusInput === 'up'}>
                   Ativo
                   <input type="radio" {...register('status')} name='status' value='up' />
-                </label>
-                <label>
+                </Label>
+                <Label active={statusInput === 'warning'}>
                   Inativo
                   <input type="radio" {...register('status')} name='status' value='warning' />
-                </label>
-                <label>
+                </Label>
+                <Label active={statusInput === 'error'}>
                   Erro
                   <input type="radio" {...register('status')} name='status' value='error' />
-                </label>
+                </Label>
               </div>
 
               <button type='submit'>Adicionar <Plus size={24} weight="bold" /> </button>

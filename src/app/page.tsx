@@ -1,6 +1,6 @@
 import { Panel } from "@/components/Panel";
 import { Container, Header, MainContent, Services } from "@/styles/pages/home";
-import { PieChart } from "@/components/Piechart";
+import { PieChart } from "@/components/PieChart"
 
 
 export interface ServicesProps {
@@ -51,7 +51,9 @@ export default async function Home() {
 
 const getServices = async () => {
   try{
-    const dataServices = await fetch('http://localhost:3333/services', {method: 'GET'})
+    const dataServices = await fetch('http://localhost:3333/services', {
+    next: { revalidate: 60 }, // 1 minute
+    })
 
     if(!dataServices){
       throw new Error('Network response was not ok');

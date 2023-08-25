@@ -56,4 +56,9 @@ export const MainContent = styled('main', {
     gridTemplateColumns: 'repeat(2, 1fr)',
     gap: '$6',
     margin: '0 auto',
+
+    "@media (max-width: 800px)": {
+        maxWidth: '100vw',
+        gridTemplateColumns: '1fr',
+    }
 })

@@ -145,7 +145,7 @@ export const MainContent = styled('div', {
         cursor: 'pointer',
         transition: 'border, filter 0.2s',
 
-        '&:hover': {
+        '&:hover, &:focus': {
           border: '1px solid $purple',
           filter: 'brightness(0.8)'
         },
@@ -181,6 +181,46 @@ export const MainContent = styled('div', {
         background: '$green500',
         border: '1px solid $green200'
       }
+    }
+  }
+})
+
+export const Label = styled('label', {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  background: '$gray50',
+  fontSize: '$md',
+  border: '1px solid $gray50',
+  borderRadius: '$md',
+  padding: '$3 0',
+  width: '100%',
+  cursor: 'pointer',
+  transition: 'border, filter 0.2s',
+
+  '&:hover, &:focus': {
+    border: '1px solid $purple',
+    filter: 'brightness(0.8)'
+  },
+
+  input: {
+    display: 'hidden',
+    width: 0,
+    height: 0,
+    overflow: 'hidden',
+    position: 'absolute',
+  },
+
+  variants: {
+    active: {
+      true: {
+        border: '1px solid $purple',
+        filter: 'brightness(0.8)'
+      },
+      false: {
+        border: '1px solid $gray50',
+      },
+    
     }
   }
 })

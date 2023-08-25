@@ -1,7 +1,7 @@
 import { styled } from "@/styles";
 
 export const Container = styled('section', {
-  background: '$gray50',
+  background: '#fff',
   padding: '1rem 2rem',
   borderRadius: '$md',
 
@@ -18,7 +18,7 @@ export const PanelStatus = styled("article", {
   gap: '$5',
   marginTop: '1.5rem', 
   height: '100%',
-  maxHeight: '60vh',
+  maxHeight: '45vh',
   overflow: 'scroll',
   '&::-webkit-scrollbar': {
     width: 0,
