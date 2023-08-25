@@ -5,9 +5,10 @@ export const Container = styled('div', {
   alignItems: 'center',
   justifyContent: 'space-between',
   width: '100%',
-  padding: '$3 $2',
+  padding: '$3',
   background: '$gray400',
   borderRadius: '$md',
+  border: 'none',
   boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
 
   strong: {

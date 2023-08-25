@@ -51,7 +51,7 @@ export const Services = styled('div',{
 
 export const MainContent = styled('main', {
     width: '100%',
-    maxWidth: '100vw',
+    maxWidth: 'calc(100vw - 120px)',
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 1fr)',
     gap: '$6',

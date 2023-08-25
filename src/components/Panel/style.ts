@@ -18,6 +18,7 @@ export const PanelStatus = styled("article", {
   gap: '$5',
   marginTop: '1.5rem', 
   height: '100%',
+  maxHeight: '60vh',
   overflow: 'scroll',
   '&::-webkit-scrollbar': {
     width: 0,

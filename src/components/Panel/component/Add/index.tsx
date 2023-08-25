@@ -14,8 +14,8 @@ type FormProps = z.infer<typeof formSchedule>
 export function Add(){
   const { register, handleSubmit } = useForm<FormProps>()
 
-  function handleAddNewService(data: FormProps){
-    console.log(data)
+  async function handleAddNewService({name, status}: FormProps){
+    await fetch('http://localhost:3333/services', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({name, status})})
   }
 
   return(
